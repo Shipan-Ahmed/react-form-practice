@@ -1,10 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export class FormAction extends Component {
-  render() {
+const FormAction = () => {
+
+    const actionHandler = (e) => {
+        console.log(e.get('name'));
+        console.log(e.get('email'));
+    }
+
     return (
-      <div>
-            <form action="">
+        <div>
+            <form action={actionHandler}>
                 <input type="text" name="name" placeholder='enter name' id="" />
                 <br />
                 <input type="email" name="email" placeholder='enter your email' id="" />
@@ -12,9 +17,8 @@ export class FormAction extends Component {
                 <input type="submit" value="submit" />
 
             </form>
-      </div>
-    )
-  }
-}
+        </div>
+    );
+};
 
-export default FormAction
+export default FormAction;
