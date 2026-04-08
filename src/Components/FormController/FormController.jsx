@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 const FormController = () => {
 
-    const [password, setPassword] = useState('fghsdgdsf');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -12,6 +13,11 @@ const FormController = () => {
 
     const changePasswordHandler = (e) => {
         console.log(e.target.value);
+        setPassword(e.target.value);
+
+        // handle error
+        if (password.length < 6) setError('password must be 6 or more!');
+        else setError('');
     }
 
     return (
@@ -25,6 +31,9 @@ const FormController = () => {
 
 
             </form>
+            <p style={{color: 'red'}}>
+                 {error}
+            </p>
         </div>
     );
 };
